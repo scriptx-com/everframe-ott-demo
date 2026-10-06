@@ -33,8 +33,12 @@ pnpm install
 cp .env.example .env
 ```
 
-Create a project in Everframe with two integrations, **React Native** (phones
-and TVs) and **Web**, and put their SDK keys in `.env`:
+The app works out of the box: it reports to a public, rate-limited Nocturne TV
+demo project on everframe.dev (keys in `src/everframe/keys.ts`).
+
+To see the reports yourself, create a project in Everframe with two
+integrations, **React Native** (phones and TVs) and **Web**, and put their SDK
+keys in `.env`:
 
 ```sh
 EXPO_PUBLIC_EVERFRAME_KEY=evf_live_…       # React Native integration
@@ -42,8 +46,6 @@ EXPO_PUBLIC_EVERFRAME_WEB_KEY=evf_live_…   # Web integration
 ```
 
 Keys are read at build time: restart Metro or rebuild after changing them.
-Without a key the app runs normally with reporting switched off, and Profile
-says so.
 
 ## Running
 

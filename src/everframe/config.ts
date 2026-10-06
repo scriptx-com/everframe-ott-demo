@@ -1,6 +1,7 @@
 import { consoleIntegration } from '@everframe/react-native/integrations/console';
+import { DEMO_KEY } from './keys';
 
-const apiKey = process.env.EXPO_PUBLIC_EVERFRAME_KEY ?? '';
+const apiKey = process.env.EXPO_PUBLIC_EVERFRAME_KEY || DEMO_KEY;
 
 export const hasKey = apiKey.length > 0;
 

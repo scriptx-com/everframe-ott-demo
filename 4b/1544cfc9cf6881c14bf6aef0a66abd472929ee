@@ -1,0 +1,27 @@
+.env.example
+  s_983a450ce6fb89::t_6cd07b5e4c49e4 1-3
+README.md
+  s_983a450ce6fb89::t_b69bc43a904b52 36-41
+src/everframe/config.ts
+  s_983a450ce6fb89::t_981db72d180964 2,4
+src/everframe/config.web.ts
+  s_983a450ce6fb89::t_1654e2073f445a 3-7
+src/everframe/keys.ts
+  s_983a450ce6fb89::t_474c393eb73642 1-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4b1544cfc9cf6881c14bf6aef0a66abd472929ee",
+  "prompts": {},
+  "sessions": {
+    "s_983a450ce6fb89": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cb47f35d-a17b-4f3b-9851-1c9249241f1c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,117 @@
+.env.example
+  s_983a450ce6fb89::t_62e757d5d346bf 1-9
+.github/workflows/ci.yml
+  s_983a450ce6fb89::t_29c655d09f8ef3 1-68
+.gitignore
+  s_983a450ce6fb89::t_128435e5735913 1-14
+.npmrc
+  s_983a450ce6fb89::t_e72e31ee072f29 1-3
+LICENSE
+  s_983a450ce6fb89::t_86fa822d57424f 1-21
+NOTICE.md
+  s_983a450ce6fb89::t_4ba08592a9d2bd 1-23
+README.md
+  s_983a450ce6fb89::t_4945d214180f68 1-142
+app.json
+  s_983a450ce6fb89::t_99bbf025ebaf05 1-83
+assets/fonts/OFL-Bricolage.txt
+  s_983a450ce6fb89::t_3f8229cfd80a49 1-93
+assets/fonts/OFL-InstrumentSans.txt
+  s_983a450ce6fb89::t_20bf884bd91e32 1-93
+babel.config.js
+  s_983a450ce6fb89::t_7dd297018ad21e 1-4
+index.js
+  s_983a450ce6fb89::t_6dbaa1e6597dea 1-4
+metro.config.js
+  s_983a450ce6fb89::t_d2b352289f616c 1-14
+package.json
+  s_983a450ce6fb89::t_1568d589e6e31d 1-44
+plugins/with-everframe-tv-prebuild.js
+  s_983a450ce6fb89::t_c3c76efeacde48 1-173
+plugins/with-pod-deployment-target.js
+  s_983a450ce6fb89::t_baa7ae9784a98e 1-35
+pnpm-lock.yaml
+  s_983a450ce6fb89::t_5c761b250430ac 1-5370
+scripts/make-clips.sh
+  s_983a450ce6fb89::t_71f7d285a04efe 1-84
+src/App.tsx
+  s_983a450ce6fb89::t_0852e4d1e5072e 1-115
+src/components/Backdrop.tsx
+  s_983a450ce6fb89::t_5483a89ce353f3 1-88
+src/components/Cards.tsx
+  s_983a450ce6fb89::t_812d92866e7805 1-166
+src/components/Chrome.tsx
+  s_983a450ce6fb89::t_7b95c6cd0d05dc 1-165
+src/components/Focusable.tsx
+  s_983a450ce6fb89::t_64fa99abbda2b6 1-95
+src/components/Icon.tsx
+  s_983a450ce6fb89::t_3e40dfbb7b3e49 1-89
+src/components/Rail.tsx
+  s_983a450ce6fb89::t_c9a00857351cdb 1-106
+src/components/ReportTrigger.tsx
+  s_983a450ce6fb89::t_3aa2bb6a44a07a 1-241
+src/components/Toast.tsx
+  s_983a450ce6fb89::t_9d647e9c252243 1-66
+src/components/primitives.tsx
+  s_983a450ce6fb89::t_8b5414bc33942d 1-167
+src/data/catalog.ts
+  s_983a450ce6fb89::t_9a9a837b8b47c7 1-491
+src/data/moreTitles.ts
+  s_983a450ce6fb89::t_b89736e84f9534 1-380
+src/data/myList.ts
+  s_983a450ce6fb89::t_195935cc8ef53a 1-21
+src/deepLinks.ts
+  s_983a450ce6fb89::t_839ed33ba78130 1-42
+src/demo/api.ts
+  s_983a450ce6fb89::t_d51f68d1ec1c93 1-123
+src/demo/scenarios.ts
+  s_983a450ce6fb89::t_9f31b3b8f70c90 1-91
+src/everframe/config.ts
+  s_983a450ce6fb89::t_e3410d8b0c4ada 1-17
+src/everframe/config.web.ts
+  s_983a450ce6fb89::t_b764a3f489153c 1-13
+src/everframe/hotkey.ts
+  s_983a450ce6fb89::t_8e19deef63de04 1-2
+src/everframe/hotkey.web.ts
+  s_983a450ce6fb89::t_7869fcfd7cf821 1-15
+src/everframe/usePlayerTracking.ts
+  s_983a450ce6fb89::t_f9c794e21eaa64 1-8
+src/everframe/usePlayerTracking.web.ts
+  s_983a450ce6fb89::t_c1cdd045e078d6 1-24
+src/layout.ts
+  s_983a450ce6fb89::t_2fc312af7a8afb 1-49
+src/nav.ts
+  s_983a450ce6fb89::t_f8658ebeef86c7 1-71
+src/screens/Browse.tsx
+  s_983a450ce6fb89::t_5f0c5c8c4003f3 1-57
+src/screens/Detail.tsx
+  s_983a450ce6fb89::t_e275ad2f675f35 1-244
+src/screens/Home.tsx
+  s_983a450ce6fb89::t_6477aea8e794a7 1-181
+src/screens/Player.tsx
+  s_983a450ce6fb89::t_469f50ada9fe93 1-366
+src/screens/Profile.tsx
+  s_983a450ce6fb89::t_4172ae8b06e7c6 1-127
+src/screens/Search.tsx
+  s_983a450ce6fb89::t_91fe1e3cc20fcf 1-98
+src/theme.ts
+  s_983a450ce6fb89::t_4b750e293cc32b 1-52
+tsconfig.json
+  s_983a450ce6fb89::t_82af1ebd5eda8c 1-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d0e08f0cda7662568725692961efa2e90b260d9f",
+  "prompts": {},
+  "sessions": {
+    "s_983a450ce6fb89": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cb47f35d-a17b-4f3b-9851-1c9249241f1c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

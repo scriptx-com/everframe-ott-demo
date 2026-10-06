@@ -1,0 +1,44 @@
+{
+  "name": "everframe-ott-demo",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "web": "expo start --web",
+    "ios": "expo run:ios",
+    "android": "expo run:android",
+    "ios:tv": "EXPO_TV=1 expo run:ios",
+    "android:tv": "EXPO_TV=1 expo run:android",
+    "prebuild": "expo prebuild --clean",
+    "prebuild:tv": "EXPO_TV=1 expo prebuild --clean",
+    "build:web": "expo export --platform web --output-dir dist",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@everframe/react-native": "^1.0.0",
+    "@expo/metro-runtime": "~56.0.21",
+    "@react-native-tvos/config-tv": "0.1.6",
+    "expo": "~56.0.23",
+    "expo-build-properties": "~56.0.27",
+    "expo-font": "~56.0.7",
+    "expo-linear-gradient": "~56.0.4",
+    "expo-video": "~56.1.4",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "npm:react-native-tvos@0.85.3-3",
+    "react-native-qrcode-svg": "^6.3.15",
+    "react-native-svg": "^15.14.0",
+    "react-native-web": "^0.21.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.1",
+    "typescript": "~5.9.0"
+  },
+  "description": "Nocturne TV: a demo streaming app for Apple TV, Android TV, phones and the web, with Everframe bug reporting built in.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.15.0"
+}

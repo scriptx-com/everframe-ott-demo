@@ -1,0 +1,14 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "jsx": "react-native",
+    "lib": ["ES2022", "DOM"],
+    "types": ["react", "react-native"],
+    "paths": {
+      "@everframe/react-native": ["../../.everframe-sdk/packages/sdk-react-native/dist/index.d.ts"],
+      "@everframe/react-native/*": ["../../.everframe-sdk/packages/sdk-react-native/dist/*"]
+    }
+  },
+  "include": ["src/**/*", "index.js"]
+}

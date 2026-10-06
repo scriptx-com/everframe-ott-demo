@@ -64,8 +64,9 @@ export function Rail<T>({ heading, items, shape, render, keyOf }: {
   const width = railCardWidth(L, shape);
   const gap = L.size({ tv: 28, wide: 18, phone: 12 });
   const headingSize = L.size({ tv: 32, wide: 24, phone: 20 });
-  // Room above and below so a focused, scaled card is not clipped.
-  const focusRoom = L.form === 'tv' ? L.size({ tv: 24, wide: 0, phone: 0 }) : 0;
+  // Room above and below so a focused, scaled card is not clipped. On wide
+  // screens the ring alone (4px outline, 5px offset) sits 9px outside the card.
+  const focusRoom = L.size({ tv: 24, wide: 10, phone: 0 });
   const scroller = useRef<ScrollView>(null);
   const [x, setX] = useState(0);
   const [viewport, setViewport] = useState(0);
@@ -76,7 +77,7 @@ export function Rail<T>({ heading, items, shape, render, keyOf }: {
   const inset = wide ? Math.max(L.gutter, (L.width - 1440) / 2 + L.gutter) : L.gutter;
 
   return (
-    <View style={{ gap: L.size({ tv: 6, wide: 14, phone: 12 }) }}>
+    <View style={{ gap: L.size({ tv: 6, wide: 4, phone: 12 }) }}>
       <View style={{ paddingHorizontal: inset, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <SectionHeading size={headingSize}>{heading}</SectionHeading>
         {wide && content > viewport + 4 ? (

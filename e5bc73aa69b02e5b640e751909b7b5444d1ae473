@@ -1,0 +1,19 @@
+src/components/Rail.tsx
+  s_50ef5cb0514104::t_d784affad235d3 67-69,80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e5bc73aa69b02e5b640e751909b7b5444d1ae473",
+  "prompts": {},
+  "sessions": {
+    "s_50ef5cb0514104": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e98b6f9-1059-4977-9c48-97ee9d044c6b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

@@ -22,6 +22,32 @@ Everything on screen is original: titles, synopses and people are invented,
 the artwork was generated for this app, and the episode clips are slow camera
 moves over that artwork. See [NOTICE.md](NOTICE.md).
 
+## Screenshots
+
+**Apple TV**, home and the player with subtitles:
+
+![Nocturne TV home on Apple TV, with The Salt Line in the hero and Continue watching below](docs/screenshots/apple-tv-home.webp)
+
+![The Apple TV player showing Pip and the Paper Fleet with a subtitle line](docs/screenshots/apple-tv-player.webp)
+
+**Android TV**, the series grid (the empty Neon Saints tile is one of the [demo bugs](#demo-bugs)):
+
+![The Series grid on Android TV with the first poster focused](docs/screenshots/android-tv-series.webp)
+
+**Web**, a film page and a report being annotated:
+
+![The Paper Moons film page in the browser, with Play, Download and More like this](docs/screenshots/web-detail.webp)
+
+![The Everframe reporter in the browser, with the missing Neon Saints poster circled](docs/screenshots/web-reporter.webp)
+
+**iPhone**, home, a series page and the reporter:
+
+<p>
+  <img src="docs/screenshots/iphone-home.webp" width="260" alt="Nocturne TV home on iPhone">
+  <img src="docs/screenshots/iphone-detail.webp" width="260" alt="The Low Orbit series page on iPhone, with Resume and Download">
+  <img src="docs/screenshots/iphone-reporter.webp" width="260" alt="The Everframe reporter on iPhone, with the failed Download button boxed and an arrow">
+</p>
+
 ## Setup
 
 You need Node 20+, pnpm, and the usual React Native toolchain: Xcode with the

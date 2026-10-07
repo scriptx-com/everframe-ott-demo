@@ -12,3 +12,7 @@ web-build/
 # Your Everframe keys
 .env
 .env.local
+
+# Build output of local Expo modules
+/modules/*/android/build/
+/modules/*/ios/build/

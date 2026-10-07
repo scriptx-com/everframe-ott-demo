@@ -146,6 +146,40 @@ Other things worth showing:
 - Every screen is named with `useEverframeScreen`, and navigation leaves
   breadcrumbs.
 
+## Demo mode
+
+Everframe's onboarding demo runs this app on streamed devices and in the
+browser. That build is the same app with `EXPO_PUBLIC_DEMO_MODE=1`:
+
+- **SDK key per visitor.** The key comes from the `everframeKey` launch param
+  that VibeView passes to the app, or from `?key=` in the URL on web, so each
+  organization's reports land in its own project. Without one, the usual keys
+  from `.env` or `src/everframe/keys.ts` apply.
+- **A visible Report a bug button** on phones and the web. Shaking the phone
+  and Ctrl/Cmd+Shift+B still work, and TVs keep their remote triggers.
+- **Every demo bug starts on**, and Profile hides the switches.
+
+Builds without the flag behave exactly as described above.
+
+```sh
+EXPO_PUBLIC_DEMO_MODE=1 pnpm ios      # or android, ios:tv, android:tv, web
+pnpm build:web:demo                   # static web build in dist/
+```
+
+`build:web:demo` passes `--clear`: Metro otherwise reuses a previous build's
+inlined environment and silently produces a build without demo mode.
+
+Launch params are read by a small local module, `modules/launch-params`
+(`UserDefaults` on iOS and tvOS; intent extras, then the `prefs.db` shared
+preferences on Android). To try it on a simulator:
+
+```sh
+xcrun simctl spawn booted defaults write dev.everframe.nocturne everframeKey evf_live_xxx
+adb shell am start -n dev.everframe.nocturne/.MainActivity --es everframeKey evf_live_xxx
+```
+
+Publishing the demo is covered in [docs/demo-mode.md](docs/demo-mode.md).
+
 ## Deep links
 
 Handy for recordings: jump straight to a scene instead of navigating to it.

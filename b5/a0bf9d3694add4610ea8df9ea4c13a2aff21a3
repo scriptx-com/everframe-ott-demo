@@ -1,0 +1,33 @@
+src/demo/mode.ts
+  s_5962212a426267::t_778a03ae8c6012 1-27
+src/demo/mode.test.ts
+  s_5962212a426267::t_6fe9c2514da605 1-44
+package.json
+  s_5962212a426267::t_071d8b0d051829 16-17,37-38
+pnpm-lock.yaml
+  s_5962212a426267::t_fa5af2226aea4a 60-62,638-640,709-801,811-813,817-822,857-870,944-947,1063-1066,1275-1277,1293-1295,1304-1307,1460-1464,1753-1755,2006-2009,2248-2252,2366-2368,2427-2434,2519-2602,2632-2636,3623-3624,3711-3757,3764-3768,3771-3774,3809-3819,3872-3873,4024-4025,4231-4232,4241-4244,4249-4250,4432-4434,4677-4680,5123-5124,5401-5421,5531-5532,5588-5591,5646-5679,5707-5708
+src/demo/scenarios.ts
+  s_5962212a426267::t_63fde284830a57 2,52-53
+src/everframe/config.ts
+  s_5962212a426267::t_27c85ae9db0048 3-4,6-13
+src/everframe/config.web.ts
+  s_5962212a426267::t_199d7ef99a7ce4 4-5,7,9-15
+src/screens/Profile.tsx
+  s_5962212a426267::t_3806e994614f9a 8,14-16,82-111,114
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b5a0bf9d3694add4610ea8df9ea4c13a2aff21a3",
+  "prompts": {},
+  "sessions": {
+    "s_5962212a426267": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aa9beed1-8fd6-43b6-8213-e48bea82c638",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

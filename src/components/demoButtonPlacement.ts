@@ -11,5 +11,7 @@ export function demoButtonPlacement(i: {
   route: string;
 }): DemoButtonPlacement | null {
   if (!i.demo || i.isTV || i.route === 'player') return null;
-  return i.isWeb && i.form === 'wide' ? 'header' : 'floating';
+  // Only section screens render TopNav, so other wide-web screens (a series
+  // page) get the floating button instead of no button at all.
+  return i.isWeb && i.form === 'wide' && i.route === 'section' ? 'header' : 'floating';
 }

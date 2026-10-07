@@ -1,7 +1,16 @@
 import { consoleIntegration } from '@everframe/react-native/integrations/console';
 import { DEMO_KEY } from './keys';
+import { getLaunchParam } from '../../modules/launch-params';
+import { isDemoMode, resolveNativeKey } from '../demo/mode';
 
-const apiKey = process.env.EXPO_PUBLIC_EVERFRAME_KEY || DEMO_KEY;
+// Demo builds take the key VibeView passes as a launch param, so one shared
+// build reports to each org's own demo project.
+const apiKey = resolveNativeKey({
+  demo: isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE }),
+  launchParam: getLaunchParam('everframeKey'),
+  envKey: process.env.EXPO_PUBLIC_EVERFRAME_KEY,
+  baked: DEMO_KEY,
+});
 
 export const hasKey = apiKey.length > 0;
 

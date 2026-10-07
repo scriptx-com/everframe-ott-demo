@@ -14,6 +14,10 @@ Values in angle brackets are placeholders to fill in when the accounts exist.
 1. Build release artifacts with `EXPO_PUBLIC_DEMO_MODE=1` for the iOS
    simulator, the tvOS simulator, Android and Android TV
    (see VibeView's "Preparing your build" guide for the upload format).
+   Build with **no** `EXPO_PUBLIC_EVERFRAME_KEY` / `EXPO_PUBLIC_EVERFRAME_WEB_KEY`
+   in the environment or `.env`: Expo bakes them in at build time, and a
+   launch without a param would then report to the builder's own project
+   instead of falling back to the public demo key in `src/everframe/keys.ts`.
 2. Upload them to one app named "Nocturne TV" in `<VIBEVIEW_DEMO_ACCOUNT>`.
 3. For each of iPhone, Pixel, Apple TV and Android TV, start a sandbox
    session with launch params `{"everframeKey":"evf_live_PROBE"}` and confirm
@@ -25,6 +29,9 @@ Values in angle brackets are placeholders to fill in when the accounts exist.
    | Pixel | | |
    | Apple TV | | |
    | Android TV | | |
+
+   Then relaunch each device **without** params and confirm the SDK falls back
+   to the public demo key, so no key carries over from a previous session.
 
    If Apple TV doesn't receive it, leave Apple TV out of the embed key's
    devices until VibeView delivers launch params on tvOS. If Android TV

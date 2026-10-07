@@ -1,0 +1,33 @@
+.gitignore
+  s_5962212a426267::t_4aabb86a7db09c 15-18
+modules/launch-params/android/build.gradle
+  s_5962212a426267::t_60aa0503cbbf90 1-18
+modules/launch-params/android/src/main/AndroidManifest.xml
+  s_5962212a426267::t_c7386c56b414c4 1-2
+modules/launch-params/android/src/main/java/dev/everframe/launchparams/LaunchParamsModule.kt
+  s_5962212a426267::t_96f2857ef91271 1-25
+modules/launch-params/expo-module.config.json
+  s_5962212a426267::t_d31e348c621e86 1-9
+modules/launch-params/index.ts
+  s_5962212a426267::t_a5f84426567559 1-14
+modules/launch-params/ios/LaunchParams.podspec
+  s_5962212a426267::t_6c1c8284efe9df 1-23
+modules/launch-params/ios/LaunchParamsModule.swift
+  s_5962212a426267::t_c42f19619fcc75 1-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c3850924ee8e3d1bdd030b78d058849e50f11b55",
+  "prompts": {},
+  "sessions": {
+    "s_5962212a426267": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aa9beed1-8fd6-43b6-8213-e48bea82c638",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

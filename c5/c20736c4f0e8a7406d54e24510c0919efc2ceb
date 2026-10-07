@@ -1,0 +1,79 @@
+modules/launch-params/android/build.gradle
+  s_5962212a426267::t_840ffe96889edc 1-18
+modules/launch-params/android/build/.transforms/7dd890806a4446b41b9d8dcdfe7f2da3/results.bin
+  s_5962212a426267::t_1685a03fc03601 1
+modules/launch-params/android/build/.transforms/d2be556f550747d67d2dace7124f1832/results.bin
+  s_5962212a426267::t_4aa926cf414710 1
+modules/launch-params/android/build/generated/source/buildConfig/debug/dev/everframe/launchparams/BuildConfig.java
+  s_360d9eb003c487::t_563f490f274d06 1-10
+modules/launch-params/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml
+  s_360d9eb003c487::t_eb09f62d245935 1-7
+modules/launch-params/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json
+  s_360d9eb003c487::t_a38f39c716ff31 1-18
+modules/launch-params/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties
+  s_360d9eb003c487::t_4b1ed2ee760923 1-6
+modules/launch-params/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json
+  s_360d9eb003c487::t_c0adca29b5acb9 1
+modules/launch-params/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties
+  s_360d9eb003c487::t_f3a89da5fa388d 1
+modules/launch-params/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml
+  s_360d9eb003c487::t_51c98cea42a6d8 1-2
+modules/launch-params/android/build/intermediates/incremental/mergeDebugAssets/merger.xml
+  s_360d9eb003c487::t_a12afbeb96b1b5 1-2
+modules/launch-params/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+  s_360d9eb003c487::t_61074d87d8c67a 1-2
+modules/launch-params/android/build/intermediates/incremental/mergeDebugShaders/merger.xml
+  s_360d9eb003c487::t_771ce06b92a529 1-2
+modules/launch-params/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt
+  s_360d9eb003c487::t_45237027be3d1c 1-2
+modules/launch-params/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt
+  s_360d9eb003c487::t_42a9db9de16ac9 1-7
+modules/launch-params/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml
+  s_360d9eb003c487::t_01ecacfc050f52 1-7
+modules/launch-params/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json
+  s_360d9eb003c487::t_04e38b650e9bd5 1
+modules/launch-params/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt
+  s_360d9eb003c487::t_f577a9cdee1fdb 1
+modules/launch-params/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt
+  s_360d9eb003c487::t_3ec12334db08b6 1
+modules/launch-params/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/counters.tab
+  s_5962212a426267::t_10e9175dc61a1b 1-2
+modules/launch-params/android/build/outputs/logs/manifest-merger-debug-report.txt
+  s_360d9eb003c487::t_5cbb6c52fdf564 1-14
+modules/launch-params/android/src/main/AndroidManifest.xml
+  s_5962212a426267::t_d59921f89cb9c8 1-2
+modules/launch-params/android/src/main/java/dev/everframe/launchparams/LaunchParamsModule.kt
+  s_5962212a426267::t_cbecdfd1f006e4 1-25
+modules/launch-params/expo-module.config.json
+  s_5962212a426267::t_88808f5bc43424 1-9
+modules/launch-params/index.ts
+  s_5962212a426267::t_6cb8dc56ac0269 1-14
+modules/launch-params/ios/LaunchParams.podspec
+  s_5962212a426267::t_be47b2fe948179 1-23
+modules/launch-params/ios/LaunchParamsModule.swift
+  s_5962212a426267::t_143c8f2fb31178 1-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c5c20736c4f0e8a7406d54e24510c0919efc2ceb",
+  "prompts": {},
+  "sessions": {
+    "s_360d9eb003c487": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "327e1a64-2e33-4b4b-ab72-a7356d386409",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    },
+    "s_5962212a426267": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aa9beed1-8fd6-43b6-8213-e48bea82c638",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

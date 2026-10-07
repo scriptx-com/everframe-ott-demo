@@ -9,6 +9,8 @@ import { useInsets, useLayout } from './layout';
 import { currentSection, nav, sectionKind, useStack, type Route } from './nav';
 import { TabBar } from './components/Chrome';
 import { ReportTrigger } from './components/ReportTrigger';
+import { DemoReportButton, demoButtonPlacement } from './components/DemoReportButton';
+import { isDemoMode } from './demo/mode';
 import { ToastHost } from './components/Toast';
 import { Home } from './screens/Home';
 import { Browse } from './screens/Browse';
@@ -79,6 +81,8 @@ function SignedInViewer(): null {
   return null;
 }
 
+const DEMO_MODE = isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE });
+
 function Shell(): React.JSX.Element {
   const L = useLayout();
   const insets = useInsets();
@@ -89,6 +93,15 @@ function Shell(): React.JSX.Element {
   useQuietDevMenu();
 
   const showTabs = L.form === 'phone' && top.name !== 'player';
+  const demoButton = demoButtonPlacement({
+    demo: DEMO_MODE,
+    isTV: Platform.isTV,
+    isWeb: Platform.OS === 'web',
+    form: L.form,
+    route: top.name,
+  });
+  // TabBar is 1px border + 8 top padding + 50 row + the bottom inset.
+  const demoButtonBottom = (showTabs ? 59 + insets.bottom : insets.bottom) + 16;
 
   return (
     <View style={{ flex: 1, backgroundColor: color.ground }}>
@@ -97,6 +110,7 @@ function Shell(): React.JSX.Element {
       </View>
       {showTabs ? <TabBar active={currentSection(stack)} bottomInset={insets.bottom} /> : null}
       <ReportTrigger />
+      {demoButton === 'floating' ? <DemoReportButton placement="floating" bottom={demoButtonBottom} /> : null}
       <ToastHost top={insets.top + L.size({ tv: 48, wide: 20, phone: 12 })} />
     </View>
   );

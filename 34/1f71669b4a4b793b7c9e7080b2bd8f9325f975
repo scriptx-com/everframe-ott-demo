@@ -1,0 +1,27 @@
+src/components/demoButtonPlacement.test.ts
+  s_5962212a426267::t_3c2553d5ecd0dd 1-13
+src/components/DemoReportButton.tsx
+  s_5962212a426267::t_6ed9354d961b43 1-51
+src/components/demoButtonPlacement.ts
+  s_5962212a426267::t_67656a42abde9f 1-15
+src/App.tsx
+  s_5962212a426267::t_0983989b965fb3 12-13,84-85,96-104,113
+src/components/Chrome.tsx
+  s_5962212a426267::t_14f94c86a621fa 9-12,72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "341f71669b4a4b793b7c9e7080b2bd8f9325f975",
+  "prompts": {},
+  "sessions": {
+    "s_5962212a426267": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aa9beed1-8fd6-43b6-8213-e48bea82c638",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

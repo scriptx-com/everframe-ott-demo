@@ -5,8 +5,9 @@ Values in angle brackets are placeholders to fill in when the accounts exist.
 
 | Placeholder | Meaning |
 |---|---|
-| `<VIBEVIEW_DEMO_ACCOUNT>` | The dedicated VibeView account that hosts the demo app |
-| `<VIBEVIEW_DEMO_EMBED_KEY>` | That account's embed key, e.g. `ek_live_REPLACE_ME` |
+| `<VIBEVIEW_DEMO_ACCOUNT>` | The dedicated VibeView account that hosts the demo apps |
+| `<EMBED_KEY>` | One embed key per platform app, e.g. `ek_live_REPLACE_ME` |
+| `<SIGNING_SECRET>` | That key's visitor signing secret, e.g. `vvis_REPLACE_ME` (server-side only) |
 
 ## 1. Native builds on VibeView
 
@@ -17,7 +18,8 @@ Values in angle brackets are placeholders to fill in when the accounts exist.
    in the environment or `.env`: Expo bakes them in at build time, and a
    launch without a param would then report to the builder's own project
    instead of falling back to the public demo key in `src/everframe/keys.ts`.
-2. Upload them to one app named "Nocturne TV" in `<VIBEVIEW_DEMO_ACCOUNT>`.
+2. Upload them to `<VIBEVIEW_DEMO_ACCOUNT>`. A VibeView app has exactly one
+   platform, so this is four apps: iOS, tvOS, Android and Android TV.
 3. For each of iPhone, Pixel, Apple TV and Android TV, start a sandbox
    session with launch params `{"everframeKey":"evf_live_PROBE"}` and confirm
    the SDK configured with that key.
@@ -49,31 +51,44 @@ The web demo runs on Cloudflare as a static-assets Worker at
 2. Open `https://ott-demo.everframe.dev/?key=evf_live_PROBE` and confirm the
    header shows **Report a bug** and the SDK requests use that key.
 
-## 3. Embed key
+## 3. Embed keys
 
-In `<VIBEVIEW_DEMO_ACCOUNT>`, Embedding → Create key:
+An embed key streams one app, so create one key per platform app in
+`<VIBEVIEW_DEMO_ACCOUNT>` (Embedding → Create key). Everframe's demo page
+switches between them. For each:
 
 | Setting | Value |
 |---|---|
-| App and build | Nocturne TV, latest build (auto) |
+| App and build | That platform's app, latest build (auto) |
 | Allowed domains | the Everframe dashboard's domain, `localhost` |
-| Device models | Apple TV, iPhone, Pixel, Android TV |
-| Let visitors choose the device | On |
+| Device models | the platform's device, e.g. iPhone or Pixel |
+| Let visitors choose the device | Off |
 | Max session duration | 600 |
 | Max concurrent sessions | the pool size the account plan allows |
 | Max sessions per visitor | 1 |
 | Audio | Off |
 
+Copy each key's visitor signing secret when it is shown (once). Everframe signs
+the signed-in user as the visitor, so a user who leaves the demo page and comes
+back resumes their running session. Once every key has its secret in
+Everframe, turn on **Require a visitor identity**.
+
 Smoke test from a local page on `localhost`:
 
 ```html
 <iframe
-  src="https://vibeview.io/embed/<VIBEVIEW_DEMO_EMBED_KEY>?params=%7B%22everframeKey%22%3A%22evf_live_PROBE%22%7D"
-  style="width:100%;max-width:380px;aspect-ratio:9/19.5;border:0"
+  src="https://vibeview.io/embed/<EMBED_KEY>?params=%7B%22everframeKey%22%3A%22evf_live_PROBE%22%7D"
+  style="width:100%;max-width:380px;aspect-ratio:380/820;border:0"
   allow="autoplay; clipboard-write" allowfullscreen></iframe>
 ```
 
 ## 4. Hand the values to Everframe
 
-Set `VIBEVIEW_DEMO_EMBED_KEY=<VIBEVIEW_DEMO_EMBED_KEY>` and
-`NOCTURNE_WEB_URL=https://ott-demo.everframe.dev` in the Everframe API environment.
+In the Everframe API environment, set for each platform (`IOS`, `ANDROID`,
+`TVOS`, `ANDROID_TV`):
+
+- `VIBEVIEW_DEMO_EMBED_KEY_<PLATFORM>=<EMBED_KEY>`
+- `VIBEVIEW_DEMO_SIGNING_SECRET_<PLATFORM>=<SIGNING_SECRET>`
+
+and `NOCTURNE_WEB_URL=https://ott-demo.everframe.dev`. A platform without a
+key is left out of the demo page.

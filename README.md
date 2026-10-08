@@ -166,6 +166,9 @@ EXPO_PUBLIC_DEMO_MODE=1 pnpm ios      # or android, ios:tv, android:tv, web
 pnpm build:web:demo                   # static web build in dist/
 ```
 
+The web demo is live at https://ott-demo.everframe.dev and redeploys on every
+push to `main`.
+
 `build:web:demo` passes `--clear`: Metro otherwise reuses a previous build's
 inlined environment and silently produces a build without demo mode.
 

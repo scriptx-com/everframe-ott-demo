@@ -13,13 +13,16 @@ import { Icon } from './Icon';
 //   phone         — shake the phone (the SDK's own shake-to-report trigger,
 //                   switched on in everframe/config.ts)
 //   web           — Ctrl+Shift+B (Cmd+Shift+B on a Mac)
-//   Android TV    — the Menu button opens the on-screen reporter
-//   Apple TV      — holding Play/Pause opens phone pairing: the viewer scans
-//                   a code and files the report from their phone, with this
-//                   screen's context streamed to it.
+//   Apple TV      — holding Play/Pause opens the pairing panel
+//   Android TV    — the Menu button opens the pairing panel
+// The pairing panel never asks anyone to type a report with a remote: the
+// viewer scans its code and files the report from their phone, or picks the
+// TV up in the Everframe dashboard's Companion and files it from there, with
+// this screen's context streamed either way.
 // Everywhere, Profile also has a "Report a problem" entry.
 
 const appleTV = Platform.isTV && Platform.OS === 'ios';
+const tv = Platform.isTV;
 const KEY_UP = 1;
 
 let requestHandler: (() => void) | null = null;
@@ -48,7 +51,7 @@ export function ReportTrigger(): React.JSX.Element | null {
   const busy = useRef(false);
 
   const report = useCallback(async () => {
-    if (appleTV) {
+    if (tv) {
       setPairing(true);
       return;
     }
@@ -121,7 +124,7 @@ function SentToast(): React.JSX.Element {
   );
 }
 
-/** Apple TV: pair a phone and file the report there. */
+/** TVs: pair a phone, or the dashboard's Companion, and file the report there. */
 function PairPhone({ onClose }: { onClose: () => void }): React.JSX.Element {
   const L = useLayout();
   const { state, pairUrl, resolvedName, code, running } = useCompanion();
@@ -204,7 +207,7 @@ function PairPhone({ onClose }: { onClose: () => void }): React.JSX.Element {
           <Text style={{ fontFamily: font.medium, fontSize: s(22), color: everframe.iceDim }}>Everframe</Text>
           <Text style={{ fontFamily: font.semibold, fontSize: s(46), color: everframe.ice, letterSpacing: -s(1.2) }}>Report a problem</Text>
           <Text style={{ fontFamily: font.body, fontSize: s(24), lineHeight: s(34), color: everframe.iceDim }}>
-            Scan the code to describe the problem on your phone. This screen, and what just happened on it, is attached for you.
+            Scan the code to describe the problem on your phone, or open Companion in your Everframe project to report from your computer. This screen, and what just happened on it, is attached for you.
           </Text>
         </View>
         <View style={{ alignSelf: 'flex-start', padding: s(24), backgroundColor: '#FFFFFF', borderRadius: s(24) }}>

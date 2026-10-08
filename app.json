@@ -77,8 +77,7 @@
         }
       ],
       "./plugins/with-everframe-tv-prebuild.js",
-      "./plugins/with-pod-deployment-target.js",
-      "./plugins/with-scene-lifecycle.js"
+      "./plugins/with-pod-deployment-target.js"
     ]
   }
 }

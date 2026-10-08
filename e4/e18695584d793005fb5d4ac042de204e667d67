@@ -1,0 +1,19 @@
+docs/demo-mode.md
+  s_5962212a426267::t_e43da57d541c96 63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e4e18695584d793005fb5d4ac042de204e667d67",
+  "prompts": {},
+  "sessions": {
+    "s_5962212a426267": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aa9beed1-8fd6-43b6-8213-e48bea82c638",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

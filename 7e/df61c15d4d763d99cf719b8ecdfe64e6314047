@@ -1,0 +1,21 @@
+plugins/with-scene-lifecycle.js
+  s_5962212a426267::t_834706e0cf12d7 1-99
+app.json
+  s_5962212a426267::t_0afd3e9bc8fd9a 80-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7edf61c15d4d763d99cf719b8ecdfe64e6314047",
+  "prompts": {},
+  "sessions": {
+    "s_5962212a426267": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aa9beed1-8fd6-43b6-8213-e48bea82c638",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

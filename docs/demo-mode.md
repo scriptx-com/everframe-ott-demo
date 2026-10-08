@@ -42,8 +42,10 @@ Values in angle brackets are placeholders to fill in when the accounts exist.
 The web demo runs on Cloudflare as a static-assets Worker at
 **https://ott-demo.everframe.dev** (`wrangler.jsonc`).
 
-1. `CLOUDFLARE_API_TOKEN=… pnpm deploy:web:demo` (builds with demo mode and
-   deploys `dist/`).
+1. Every push to `main` deploys it automatically
+   (`.github/workflows/deploy-web-demo.yml`, using the `CLOUDFLARE_API_TOKEN`
+   repository secret); "Run workflow" redeploys on demand. To deploy by hand:
+   `CLOUDFLARE_API_TOKEN=… pnpm deploy:web:demo`.
 2. Open `https://ott-demo.everframe.dev/?key=evf_live_PROBE` and confirm the
    header shows **Report a bug** and the SDK requests use that key.
 

@@ -1,0 +1,14 @@
+// Hosted web demo (Everframe onboarding): the EXPO_PUBLIC_DEMO_MODE=1 build in
+// dist/, served as static assets on ott-demo.everframe.dev. Deploy with
+// `pnpm deploy:web:demo` (needs CLOUDFLARE_API_TOKEN).
+{
+  "$schema": "https://unpkg.com/wrangler@4/config-schema.json",
+  "name": "everframe-ott-demo",
+  "compatibility_date": "2026-10-06",
+  "assets": {
+    "directory": "dist",
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [{ "pattern": "ott-demo.everframe.dev", "custom_domain": true }],
+  "observability": { "enabled": true }
+}

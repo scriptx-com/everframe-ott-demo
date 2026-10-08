@@ -16,3 +16,7 @@ web-build/
 # Build output of local Expo modules
 /modules/*/android/build/
 /modules/*/ios/build/
+
+# Cloudflare wrangler state
+.wrangler/
+.dev.vars*

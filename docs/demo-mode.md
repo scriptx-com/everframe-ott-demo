@@ -7,7 +7,6 @@ Values in angle brackets are placeholders to fill in when the accounts exist.
 |---|---|
 | `<VIBEVIEW_DEMO_ACCOUNT>` | The dedicated VibeView account that hosts the demo app |
 | `<VIBEVIEW_DEMO_EMBED_KEY>` | That account's embed key, e.g. `ek_live_REPLACE_ME` |
-| `<NOCTURNE_WEB_URL>` | Where the web build is hosted, e.g. `https://nocturne-demo.example.invalid` |
 
 ## 1. Native builds on VibeView
 
@@ -40,10 +39,13 @@ Values in angle brackets are placeholders to fill in when the accounts exist.
 
 ## 2. Hosted web build
 
-1. `pnpm build:web:demo`
-2. Deploy `dist/` to `<NOCTURNE_WEB_URL>`.
-3. Open `<NOCTURNE_WEB_URL>/?key=evf_live_PROBE` and confirm the header shows
-   **Report a bug** and the SDK requests use that key.
+The web demo runs on Cloudflare as a static-assets Worker at
+**https://ott-demo.everframe.dev** (`wrangler.jsonc`).
+
+1. `CLOUDFLARE_API_TOKEN=… pnpm deploy:web:demo` (builds with demo mode and
+   deploys `dist/`).
+2. Open `https://ott-demo.everframe.dev/?key=evf_live_PROBE` and confirm the
+   header shows **Report a bug** and the SDK requests use that key.
 
 ## 3. Embed key
 
@@ -72,4 +74,4 @@ Smoke test from a local page on `localhost`:
 ## 4. Hand the values to Everframe
 
 Set `VIBEVIEW_DEMO_EMBED_KEY=<VIBEVIEW_DEMO_EMBED_KEY>` and
-`NOCTURNE_WEB_URL=<NOCTURNE_WEB_URL>` in the Everframe API environment.
+`NOCTURNE_WEB_URL=https://ott-demo.everframe.dev` in the Everframe API environment.

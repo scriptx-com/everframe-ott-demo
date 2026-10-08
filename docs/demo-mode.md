@@ -60,7 +60,7 @@ switches between them. For each:
 | Setting | Value |
 |---|---|
 | App and build | That platform's app, latest build (auto) |
-| Allowed domains | the Everframe dashboard's domain, `localhost` |
+| Allowed domains | `everframe.dev` (the Everframe dashboard), `localhost` |
 | Device models | the platform's device, e.g. iPhone or Pixel |
 | Let visitors choose the device | Off |
 | Max session duration | 600 |

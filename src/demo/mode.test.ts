@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { isDemoMode, resolveNativeKey, resolveWebKey, initialScenarioState } from './mode';
+import { isDemoMode, resolveNativeKey, resolveWebKey, initialScenarioState, keepCompanionRunning } from './mode';
 
 describe('isDemoMode', () => {
   it('is on only for EXPO_PUBLIC_DEMO_MODE=1', () => {
@@ -40,5 +40,13 @@ describe('initialScenarioState', () => {
   it('all on in demo mode, all off otherwise', () => {
     expect(Object.values(initialScenarioState(true)).every(Boolean)).toBe(true);
     expect(Object.values(initialScenarioState(false)).some(Boolean)).toBe(false);
+  });
+});
+
+describe('keepCompanionRunning', () => {
+  it('only demo builds on a TV keep Companion running from launch', () => {
+    expect(keepCompanionRunning({ demo: true, isTV: true })).toBe(true);
+    expect(keepCompanionRunning({ demo: true, isTV: false })).toBe(false);
+    expect(keepCompanionRunning({ demo: false, isTV: true })).toBe(false);
   });
 });

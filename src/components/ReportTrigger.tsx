@@ -7,6 +7,7 @@ import { useLayout } from '../layout';
 import { useReportHotkey } from '../everframe/hotkey';
 import { Focusable } from './Focusable';
 import { Icon } from './Icon';
+import { isDemoMode, keepCompanionRunning } from '../demo/mode';
 
 // Everframe leaves report triggers to the host app. Like most consumer apps,
 // Nocturne keeps them out of sight rather than floating a button over content:
@@ -23,6 +24,12 @@ import { Icon } from './Icon';
 
 const appleTV = Platform.isTV && Platform.OS === 'ios';
 const tv = Platform.isTV;
+// Demo TVs keep Companion running from launch (see keepCompanionRunning), so
+// the pairing panel must neither restart nor stop that session.
+const companionAlwaysOn = keepCompanionRunning({
+  demo: isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE }),
+  isTV: tv,
+});
 const KEY_UP = 1;
 
 let requestHandler: (() => void) | null = null;
@@ -70,6 +77,12 @@ export function ReportTrigger(): React.JSX.Element | null {
       busy.current = false;
     }
   }, [open]);
+
+  useEffect(() => {
+    if (!companionAlwaysOn) return;
+    companion.start();
+    return () => companion.stop();
+  }, []);
 
   useEffect(() => {
     requestHandler = () => void report();
@@ -131,7 +144,7 @@ function PairPhone({ onClose }: { onClose: () => void }): React.JSX.Element {
   const s = (n: number) => L.size({ tv: n, wide: n / 2, phone: n / 2 });
 
   useEffect(() => {
-    companion.start();
+    if (!companionAlwaysOn) companion.start();
     TVEventControl?.enableTVMenuKey?.();
     const sub = TVEventHandler.addListener((evt) => {
       if (evt.eventType === 'menu' && Number(evt.eventKeyAction) === KEY_UP) onClose();
@@ -139,8 +152,8 @@ function PairPhone({ onClose }: { onClose: () => void }): React.JSX.Element {
     return () => {
       sub?.remove();
       // A fresh pairing code every time the panel opens; a stale one may
-      // already have expired on the server.
-      companion.stop();
+      // already have expired on the server. An always-on session stays up.
+      if (!companionAlwaysOn) companion.stop();
     };
   }, [onClose]);
 

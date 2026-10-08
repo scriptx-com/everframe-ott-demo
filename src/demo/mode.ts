@@ -25,3 +25,12 @@ const ALL: ScenarioId[] = ['subtitleDrift', 'brokenPoster', 'slowSearch', 'downl
 export function initialScenarioState(demo: boolean): Record<ScenarioId, boolean> {
   return Object.fromEntries(ALL.map((id) => [id, demo])) as Record<ScenarioId, boolean>;
 }
+
+/**
+ * Demo TVs announce themselves to the dashboard's Companion from launch: an
+ * embedded TV has no remote buttons beyond the d-pad, so a visitor should not
+ * have to dig through menus before the dashboard can pick the TV up.
+ */
+export function keepCompanionRunning(i: { demo: boolean; isTV: boolean }): boolean {
+  return i.demo && i.isTV;
+}

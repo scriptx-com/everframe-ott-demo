@@ -54,6 +54,11 @@ export function ReportTrigger(): React.JSX.Element | null {
   const L = useLayout();
   const { open } = useEverframe();
   const [pairing, setPairing] = useState(false);
+  // Subscribed here, mounted from launch, rather than in the panel: the SDK's
+  // pairUrl/state/code events don't replay to a listener added later, so a
+  // panel opened on an already-running (always-on) session would never see
+  // its pairing URL.
+  const companionState = useCompanion();
   const [sent, setSent] = useState(false);
   const busy = useRef(false);
 
@@ -106,7 +111,7 @@ export function ReportTrigger(): React.JSX.Element | null {
   return (
     <>
       {sent ? <SentToast /> : null}
-      {pairing ? <PairPhone onClose={() => setPairing(false)} /> : null}
+      {pairing ? <PairPhone companion={companionState} onClose={() => setPairing(false)} /> : null}
     </>
   );
 }
@@ -138,9 +143,14 @@ function SentToast(): React.JSX.Element {
 }
 
 /** TVs: pair a phone, or the dashboard's Companion, and file the report there. */
-function PairPhone({ onClose }: { onClose: () => void }): React.JSX.Element {
+function PairPhone({
+  companion: { state, pairUrl, resolvedName, code, running },
+  onClose,
+}: {
+  companion: ReturnType<typeof useCompanion>;
+  onClose: () => void;
+}): React.JSX.Element {
   const L = useLayout();
-  const { state, pairUrl, resolvedName, code, running } = useCompanion();
   const s = (n: number) => L.size({ tv: n, wide: n / 2, phone: n / 2 });
 
   useEffect(() => {

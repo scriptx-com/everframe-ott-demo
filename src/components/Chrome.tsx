@@ -6,6 +6,10 @@ import { nav, type Section } from '../nav';
 import { Focusable } from './Focusable';
 import { Icon, type IconName } from './Icon';
 import { Wordmark, styles } from './primitives';
+import { DemoReportButton } from './DemoReportButton';
+import { isDemoMode } from '../demo/mode';
+
+const DEMO_MODE = isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE });
 
 const TOP: Array<{ section: Section; label: string }> = [
   { section: 'home', label: 'Home' },
@@ -65,6 +69,7 @@ export function TopNav({ active }: { active: Section }): React.JSX.Element {
         })}
       </View>
       <View style={{ marginLeft: 'auto', flexDirection: 'row', alignItems: 'center', gap: L.size({ tv: 24, wide: 12, phone: 12 }) }}>
+        {DEMO_MODE && Platform.OS === 'web' && L.form === 'wide' ? <DemoReportButton placement="header" /> : null}
         <Focusable
           accessibilityRole="button"
           accessibilityLabel="Search"

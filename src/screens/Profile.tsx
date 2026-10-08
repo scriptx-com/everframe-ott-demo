@@ -5,10 +5,14 @@ import { color, everframe, font } from '../theme';
 import { useInsets, useLayout } from '../layout';
 import { scenarios, setAllScenarios, setScenario, useScenarios } from '../demo/scenarios';
 import { hasKey } from '../everframe/config';
+import { isDemoMode } from '../demo/mode';
 import { PhoneHeader, TopNav } from '../components/Chrome';
 import { Focusable } from '../components/Focusable';
 import { reportHint, requestReport } from '../components/ReportTrigger';
 import { Button, SectionHeading, ShowTitle, styles } from '../components/primitives';
+
+// The hosted demo starts with every bug on and hides the switches.
+const DEMO_MODE = isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE });
 
 export const viewer = {
   id: 'viewer-0042',
@@ -75,37 +79,39 @@ export function Profile(): React.JSX.Element {
           </View>
         </View>
 
-        <View style={card}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-            <View style={{ gap: 4, flexShrink: 1 }}>
-              <SectionHeading size={L.size({ tv: 32, wide: 22, phone: 19 })}>Demo bugs</SectionHeading>
-              <Text style={{ fontFamily: font.body, fontSize: fs * 0.9, color: color.lichen }}>Switch one on, reproduce it, then report it.</Text>
+        {!DEMO_MODE ? (
+          <View style={card}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+              <View style={{ gap: 4, flexShrink: 1 }}>
+                <SectionHeading size={L.size({ tv: 32, wide: 22, phone: 19 })}>Demo bugs</SectionHeading>
+                <Text style={{ fontFamily: font.body, fontSize: fs * 0.9, color: color.lichen }}>Switch one on, reproduce it, then report it.</Text>
+              </View>
+              <Button label={allOn ? 'Turn all off' : 'Turn all on'} onPress={() => setAllScenarios(!allOn)} testID="demo-all" />
             </View>
-            <Button label={allOn ? 'Turn all off' : 'Turn all on'} onPress={() => setAllScenarios(!allOn)} testID="demo-all" />
+            <View style={{ marginTop: fs * 0.6 }}>
+              {scenarios.map((s) => (
+                <Focusable
+                  key={s.id}
+                  accessibilityRole="switch"
+                  accessibilityState={{ checked: state[s.id] }}
+                  accessibilityLabel={s.name}
+                  testID={`demo-${s.id}`}
+                  onPress={() => setScenario(s.id, !state[s.id])}
+                  style={{ flexDirection: 'row', alignItems: 'center', gap: 16, paddingVertical: fs * 0.8, paddingHorizontal: fs * 0.6, borderRadius: fs * 0.6, borderBottomWidth: 1, borderBottomColor: color.line }}
+                  focusStyle={[{ backgroundColor: color.raised }, L.form === 'tv' && [styles.ring, { borderRadius: fs * 0.6 }]]}
+                >
+                  <View style={{ flex: 1, gap: 3 }}>
+                    <Text style={{ fontFamily: font.semibold, fontSize: fs, color: color.bone }}>{s.name}</Text>
+                    <Text style={{ fontFamily: font.body, fontSize: fs * 0.85, color: color.lichen }}>
+                      {s.where}. Shows: {s.shows.toLowerCase()}.
+                    </Text>
+                  </View>
+                  <Toggle on={state[s.id]} />
+                </Focusable>
+              ))}
+            </View>
           </View>
-          <View style={{ marginTop: fs * 0.6 }}>
-            {scenarios.map((s) => (
-              <Focusable
-                key={s.id}
-                accessibilityRole="switch"
-                accessibilityState={{ checked: state[s.id] }}
-                accessibilityLabel={s.name}
-                testID={`demo-${s.id}`}
-                onPress={() => setScenario(s.id, !state[s.id])}
-                style={{ flexDirection: 'row', alignItems: 'center', gap: 16, paddingVertical: fs * 0.8, paddingHorizontal: fs * 0.6, borderRadius: fs * 0.6, borderBottomWidth: 1, borderBottomColor: color.line }}
-                focusStyle={[{ backgroundColor: color.raised }, L.form === 'tv' && [styles.ring, { borderRadius: fs * 0.6 }]]}
-              >
-                <View style={{ flex: 1, gap: 3 }}>
-                  <Text style={{ fontFamily: font.semibold, fontSize: fs, color: color.bone }}>{s.name}</Text>
-                  <Text style={{ fontFamily: font.body, fontSize: fs * 0.85, color: color.lichen }}>
-                    {s.where}. Shows: {s.shows.toLowerCase()}.
-                  </Text>
-                </View>
-                <Toggle on={state[s.id]} />
-              </Focusable>
-            ))}
-          </View>
-        </View>
+        ) : null}
 
         <View style={[card, { backgroundColor: everframe.night }]}>
           <Text style={{ fontFamily: font.semibold, fontSize: fs, color: everframe.ice }}>

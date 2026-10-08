@@ -13,7 +13,10 @@
     "prebuild": "expo prebuild --clean",
     "prebuild:tv": "EXPO_TV=1 expo prebuild --clean",
     "build:web": "expo export --platform web --output-dir dist",
-    "typecheck": "tsc --noEmit"
+    "build:web:demo": "EXPO_PUBLIC_DEMO_MODE=1 expo export --clear --platform web --output-dir dist",
+    "deploy:web:demo": "pnpm build:web:demo && npx -y wrangler@4 deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "@everframe/react-native": "^1.0.0",
@@ -33,7 +36,8 @@
   },
   "devDependencies": {
     "@types/react": "^19.1.1",
-    "typescript": "~5.9.0"
+    "typescript": "~5.9.0",
+    "vitest": "^5.0.3"
   },
   "description": "Nocturne TV: a demo streaming app for Apple TV, Android TV, phones and the web, with Everframe bug reporting built in.",
   "license": "MIT",

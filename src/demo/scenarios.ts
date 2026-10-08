@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from 'react';
+import { initialScenarioState, isDemoMode } from './mode';
 
 // Bugs the app can switch on for a recording. Each one leaves the evidence an
 // Everframe report is meant to carry: a visible symptom for the screenshot,
@@ -48,13 +49,8 @@ export const scenarios: Scenario[] = [
 
 type State = Record<ScenarioId, boolean>;
 
-let state: State = {
-  subtitleDrift: false,
-  brokenPoster: false,
-  slowSearch: false,
-  downloadFails: false,
-  playerStall: false,
-};
+// Demo builds start with every bug on, so a visitor always has something to find.
+let state: State = initialScenarioState(isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE }));
 const listeners = new Set<() => void>();
 
 function emit(): void {

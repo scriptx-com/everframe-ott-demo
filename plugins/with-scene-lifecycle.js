@@ -13,13 +13,6 @@
 //   2. moves window creation and startReactNative into a SceneDelegate. The
 //      AppDelegate keeps building the React Native factory at launch.
 // Older iOS versions run the same scene path, so one build works everywhere.
-//
-// NOT ENABLED YET (not in app.json): on tvOS, @everframe/react-native 1.0.0
-// reads UIScreen.focusedView on every remote press, which UIKit refuses with
-// an uncaught exception ("Accessing the focus system through UIScreen is no
-// longer supported") in apps built with the tvOS 27 SDK or using scenes. The
-// SDK fix (everframe 7e6e74e) is not released yet; add this plugin back to
-// app.json together with the SDK release that contains it.
 
 const { withAppDelegate, withInfoPlist } = require('@expo/config-plugins');
 

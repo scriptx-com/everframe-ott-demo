@@ -1,0 +1,23 @@
+app.json
+  s_5962212a426267::t_e65034ad93da32 80-81
+package.json
+  s_5962212a426267::t_3de5c5eae79733 22
+pnpm-lock.yaml
+  s_5962212a426267::t_8586d24ad00787 12-13,415-416,421-422,3178,3180,3191
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "dd7cfb786dd30e35a7a3bc379cccf40bd1e301b6",
+  "prompts": {},
+  "sessions": {
+    "s_5962212a426267": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aa9beed1-8fd6-43b6-8213-e48bea82c638",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

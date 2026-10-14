@@ -8,9 +8,18 @@ import {
   type ViewStyle,
 } from 'react-native';
 
+import * as Everframe from '@everframe/react-native';
+import { interactionTargetsEnabled, type InteractionTargetAnnotation } from '../everframe/interactionTargets';
+
+// Keep the released demo deployable while the optional SDK feature is in review.
+const useTarget = (Everframe as typeof Everframe & {
+  useEverframeTarget?: <T>(annotation?: InteractionTargetAnnotation) => React.RefCallback<T>;
+}).useEverframeTarget ?? (() => (_host: unknown) => {});
+
 type Children = React.ReactNode | ((state: { focused: boolean }) => React.ReactNode);
 
 export interface FocusableProps extends Omit<PressableProps, 'style' | 'children'> {
+  everframeTarget?: InteractionTargetAnnotation;
   style?: StyleProp<ViewStyle>;
   /** Layout for the outer pressable, e.g. `{ flex: 1 }` inside a row. */
   containerStyle?: StyleProp<ViewStyle>;
@@ -28,6 +37,7 @@ export interface FocusableProps extends Omit<PressableProps, 'style' | 'children
  */
 export function Focusable({
   style,
+  everframeTarget,
   containerStyle,
   focusStyle,
   focusScale = 1,
@@ -39,6 +49,7 @@ export function Focusable({
   onHoverOut,
   ...rest
 }: FocusableProps): React.JSX.Element {
+  const targetRef = useTarget<React.ElementRef<typeof Pressable>>(interactionTargetsEnabled ? everframeTarget : undefined);
   const [focused, setFocused] = useState(false);
   const [hovered, setHovered] = useState(false);
   const scale = useRef(new Animated.Value(1)).current;
@@ -65,6 +76,7 @@ export function Focusable({
   return (
     <Pressable
       {...rest}
+      ref={targetRef}
       onFocus={(e) => {
         change(true);
         onFocus?.(e);

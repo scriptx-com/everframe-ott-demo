@@ -1,3 +1,4 @@
+import { buildInteractionContainer } from '../everframe/interactionTargets';
 import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { useEverframeScreen } from '@everframe/react-native';
@@ -47,7 +48,7 @@ export function Browse({ section, kind }: { section: Section; kind?: Kind }): Re
         ) : (
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap, paddingVertical: L.form === 'tv' ? 20 : 0 }}>
             {items.map((t, i) => (
-              <PosterCard key={t.id} title={t} width={width} hasTVPreferredFocus={L.form === 'tv' && i === 0} onPress={() => nav.push({ name: 'detail', id: t.id })} />
+              <PosterCard container={buildInteractionContainer(`browse-${section}`,heading[section] ?? section,i,items.length,"list")} key={t.id} title={t} width={width} hasTVPreferredFocus={L.form === 'tv' && i === 0} onPress={() => nav.push({ name: 'detail', id: t.id })} />
             ))}
           </View>
         )}

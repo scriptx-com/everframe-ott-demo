@@ -205,3 +205,8 @@ adb shell am start -a android.intent.action.VIEW -d "nocturne://demo/all/on" dev
 ```sh
 bash scripts/make-clips.sh   # episode clips from assets/images (needs ffmpeg)
 ```
+
+Optional interaction target annotations enrich Everframe breadcrumbs with rail
+and tab positions. Reporting also works with the released SDK or with annotations
+disabled. See [the validation runbook](docs/interaction-target-validation.md) for
+local SDK setup and the phone/TV matrix.

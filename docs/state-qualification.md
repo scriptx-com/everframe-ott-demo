@@ -14,7 +14,7 @@ Local qualification uses public Everframe source commit
 and matching native debug binaries. This is not an npm/Maven/Swift release.
 Dependency manifests and lockfiles retain their published versions.
 
-Validation so far:
+Validation:
 
 - 12 scenario/mode tests pass, including false values, individual/all toggles,
   initial publication and simulated remount publication.
@@ -24,8 +24,23 @@ Validation so far:
 - A rebuilt iOS app records all five startup values and all five explicit false
   values in a subsequent real report.
 
-Native provider-remount coverage, the TV hosts, individual-scenario captures
-and the refreshed demo bundle remain pending. The source change is not a claim
-that a published SDK or an old native binary supports State. A State-capable
-release and a deliberate dependency update are needed before normal builds
-can publish these values.
+- Real individual-scenario reports now cover all four native hosts: Download
+  on iOS 26.5; Search and Subtitles on tvOS 26.5; Buffering on Android 14;
+  Poster on Android TV 14. All use app 1.0.0(1), this demo source at `8bc3126`
+  and the source SDK revision above. Each snapshot records only the intended
+  scenario true and the other four false; Android captures also retain the
+  startup → all-off → individual-on change sequence.
+- An actual Android process restart republishes all five startup values.
+  An isolated native provider remount was not separately exercised.
+- The private platform exported these five genuine reports as demo bundle v2,
+  verified screenshot hashes, and provisioned a fresh local demo with recorded
+  State and generic reproduction packs. Public asset upload is still pending.
+- Manually authored Smart tests on the existing hosted builds reproduced four
+  of five fresh scenarios (poster, download, search, buffering). Subtitle timing
+  remains inconclusive. These tests use explicit human setup recipes and live
+  target navigation; their assisted result does not replace the old-report2/5
+  benchmark or qualify State in the older hosted native binaries.
+
+The source change is not a claim that a published SDK or an old native binary
+supports State. A State-capable release and a deliberate dependency update are
+needed before normal builds can publish these values. Web State is unqualified.

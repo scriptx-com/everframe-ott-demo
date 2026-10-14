@@ -6,7 +6,11 @@ import { Focusable } from './Focusable';
 import { Icon } from './Icon';
 import { SectionHeading } from './primitives';
 
+import * as Everframe from '@everframe/react-native';
+import { interactionHelpersEnabled, selectInteractionHook } from '../everframe/interactionEvents';
 import { buildInteractionContainer, type InteractionTargetAnnotation } from '../everframe/interactionTargets';
+
+const useInteraction = selectInteractionHook(Everframe, interactionHelpersEnabled);
 
 export type Shape = 'poster' | 'landscape' | 'top10';
 
@@ -63,6 +67,7 @@ export function Rail<T>({ id, heading, items, shape, render, keyOf }: {
   render: (item: T, width: number, index: number, container: NonNullable<InteractionTargetAnnotation['container']>) => React.ReactNode;
   keyOf: (item: T) => string;
 }): React.JSX.Element {
+  const interaction = useInteraction<ScrollView>({ target: { testId: `rail-${id}`, name: heading, role: 'list' }, helperTypes: [] });
   const L = useLayout();
   const width = railCardWidth(L, shape);
   const gap = L.size({ tv: 28, wide: 18, phone: 12 });
@@ -71,6 +76,7 @@ export function Rail<T>({ id, heading, items, shape, render, keyOf }: {
   // screens the ring alone (4px outline, 5px offset) sits 9px outside the card.
   const focusRoom = L.size({ tv: 24, wide: 10, phone: 0 });
   const scroller = useRef<ScrollView>(null);
+  const scrollRef = React.useCallback((host: ScrollView | null) => { scroller.current = host; interaction.ref(host); }, [interaction.ref]);
   const [x, setX] = useState(0);
   const [viewport, setViewport] = useState(0);
   const [content, setContent] = useState(0);
@@ -91,7 +97,9 @@ export function Rail<T>({ id, heading, items, shape, render, keyOf }: {
         ) : null}
       </View>
       <ScrollView
-        ref={scroller}
+        ref={scrollRef}
+        testID={`rail-${id}`}
+        accessibilityLabel={heading}
         horizontal
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={32}

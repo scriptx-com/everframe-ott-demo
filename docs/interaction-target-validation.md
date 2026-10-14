@@ -51,7 +51,11 @@ Metro build. Restart Metro between states. Production ignores the off switch.
 
 Local verification so far: metadata tests, typecheck, and web export pass against
 both the released package and the feature package. Android debug compilation
-passes against local native artifacts. Installed native envelope qualification
-is tracked separately in the coordinated SDK/private evidence; a successful
+and iOS debug compilation pass against local native artifacts. The public SDK's
+installed phone fixture has produced local iOS/Android envelopes with annotation
+on/off and masking; iOS also verified host replacement after native mount retries.
+Android's final mount retry needs an installed rerun after the dedicated emulator
+stalled under disk pressure. TV envelope runs and this demo's full Nocturne
+interaction matrix remain pending. Native envelope qualification is tracked separately in the coordinated SDK/private evidence; a successful
 compile alone is not evidence of device behavior. No deployment is part of this
 change.

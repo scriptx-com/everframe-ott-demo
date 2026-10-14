@@ -1,0 +1,43 @@
+README.md
+  s_f3bbf3765b99f4::t_3745b90579a5e6 208-212
+docs/interaction-target-validation.md
+  s_f3bbf3765b99f4::t_e6a7c5406fc158 1-57
+src/components/Cards.tsx
+  s_f3bbf3765b99f4::t_d4785b107d1d93 12-13,15,50,61,107,118
+src/components/Chrome.tsx
+  s_f3bbf3765b99f4::t_4e40b856210613 12-13,47,55,122,132
+src/components/Focusable.tsx
+  s_f3bbf3765b99f4::t_2b0d0a25d4ade9 11-18,22,40,52,79
+src/components/Rail.tsx
+  s_f3bbf3765b99f4::t_2a9f6a7f589eaf 9-10,58-59,63,105
+src/everframe/config.ts
+  s_f3bbf3765b99f4::t_275486c6a4e6d9 19
+src/everframe/interactionTargets.test.ts
+  s_f3bbf3765b99f4::t_6504f8874f3d36 1-21
+src/everframe/interactionTargets.ts
+  s_f3bbf3765b99f4::t_fe8e84c023b08a 1-18
+src/screens/Browse.tsx
+  s_f3bbf3765b99f4::t_d58ec4c3361f61 1,51
+src/screens/Detail.tsx
+  s_f3bbf3765b99f4::t_2d79bc81305fbc 149,154
+src/screens/Home.tsx
+  s_f3bbf3765b99f4::t_cd5ff2e6af831f 69,74,76,89,94,96,98,100
+tsconfig.json
+  s_f3bbf3765b99f4::t_cdd6cc3e8b39e6 6-13,15-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9fe877503aef6659781b375d0855a4adbc94a92c",
+  "prompts": {},
+  "sessions": {
+    "s_f3bbf3765b99f4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13a49-28e0-7122-b8e9-07ca3509c69b",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

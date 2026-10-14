@@ -47,10 +47,10 @@ export const scenarios: Scenario[] = [
   },
 ];
 
-type State = Record<ScenarioId, boolean>;
+export type ScenarioState = Record<ScenarioId, boolean>;
 
 // Demo builds start with every bug on, so a visitor always has something to find.
-let state: State = initialScenarioState(isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE }));
+let state: ScenarioState = initialScenarioState(isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE }));
 const listeners = new Set<() => void>();
 
 function emit(): void {
@@ -59,13 +59,11 @@ function emit(): void {
 
 export function setScenario(id: ScenarioId, on: boolean): void {
   state = { ...state, [id]: on };
-  console.info(`[demo] ${id} ${on ? 'on' : 'off'}`);
   emit();
 }
 
 export function setAllScenarios(on: boolean): void {
-  state = Object.fromEntries(Object.keys(state).map((k) => [k, on])) as State;
-  console.info(`[demo] all scenarios ${on ? 'on' : 'off'}`);
+  state = Object.fromEntries(Object.keys(state).map((k) => [k, on])) as ScenarioState;
   emit();
 }
 
@@ -78,7 +76,7 @@ function subscribe(l: () => void): () => void {
   return () => listeners.delete(l);
 }
 
-export function useScenarios(): State {
+export function useScenarios(): ScenarioState {
   return useSyncExternalStore(subscribe, () => state, () => state);
 }
 

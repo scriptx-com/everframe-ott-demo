@@ -1,0 +1,37 @@
+docs/interaction-events-validation.md
+  s_46e1aa7e76c6a2::t_0a95c5e1e9d714 1-30
+src/components/Rail.tsx
+  s_46e1aa7e76c6a2::t_62b7606d504207 9-10,13-14,70,79,100-102
+src/everframe/config.ts
+  s_eb79cd0a048bfe::t_f0f528c02d3898 1,21
+src/everframe/interactionEvents.test.ts
+  s_46e1aa7e76c6a2::t_a9dcd46713f386 1-19
+src/everframe/interactionEvents.ts
+  s_eb79cd0a048bfe::t_1c54865e279475 1-35
+src/screens/Search.tsx
+  s_46e1aa7e76c6a2::t_19e2f60a4883a8 3-4,17-19,24,67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a8e9babf3a2c6edb41e8987e10486b0abe1f0d87",
+  "prompts": {},
+  "sessions": {
+    "s_46e1aa7e76c6a2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13ac1-1fc8-7223-847e-23863230f152",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    },
+    "s_eb79cd0a048bfe": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13b4b-6dbf-7273-9431-bee25af1347c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

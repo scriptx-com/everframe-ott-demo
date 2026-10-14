@@ -1,0 +1,39 @@
+docs/state-qualification.md
+  s_eb79cd0a048bfe::t_5d1618f5d9c811 1-31
+src/App.tsx
+  s_46e1aa7e76c6a2::t_7afd9bea63daf5 14,125
+src/demo/ScenarioStatePublisher.tsx
+  s_eb79cd0a048bfe::t_b6037f18a32efd 1-16
+src/demo/ScenarioStatePublisher.web.tsx
+  s_eb79cd0a048bfe::t_ffb4acc92e024f 1-4
+src/demo/scenario-state.test.ts
+  s_eb79cd0a048bfe::t_ba65a79ec981a3 1-37
+src/demo/scenario-state.ts
+  s_46e1aa7e76c6a2::t_56c8181f205ad7 1-6
+src/demo/scenarios.ts
+  s_46e1aa7e76c6a2::t_4fe876b3ae6b9d 50,53,66,79
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8bc312674a4546ddbde0e0877393de1a1ebf0e75",
+  "prompts": {},
+  "sessions": {
+    "s_46e1aa7e76c6a2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13ac1-1fc8-7223-847e-23863230f152",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    },
+    "s_eb79cd0a048bfe": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13b4b-6dbf-7273-9431-bee25af1347c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

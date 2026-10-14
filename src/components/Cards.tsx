@@ -9,7 +9,10 @@ import { Focusable } from './Focusable';
 import { Progress, styles } from './primitives';
 import { Icon } from './Icon';
 
+import type { InteractionTargetAnnotation } from '../everframe/interactionTargets';
+
 export interface CardProps {
+  container?: InteractionTargetAnnotation['container'];
   title: Title;
   width: number;
   onPress: () => void;
@@ -44,7 +47,7 @@ function MissingArt({ title, size }: { title: Title; size: number }): React.JSX.
   );
 }
 
-export function PosterCard({ title, width, onPress, onFocus, hasTVPreferredFocus }: CardProps): React.JSX.Element {
+export function PosterCard({ title, width, onPress, onFocus, hasTVPreferredFocus, container }: CardProps): React.JSX.Element {
   const L = useLayout();
   const ok = useArtwork(title);
   const radius = L.size({ tv: 18, wide: 14, phone: 12 });
@@ -55,6 +58,7 @@ export function PosterCard({ title, width, onPress, onFocus, hasTVPreferredFocus
         accessibilityRole="button"
         accessibilityLabel={title.name}
         testID={`poster-${title.id}`}
+        everframeTarget={{testId:`poster-${title.id}`,name:title.name,role:"button",container}}
         onPress={onPress}
         onFocusChange={(f) => f && onFocus?.()}
         hasTVPreferredFocus={hasTVPreferredFocus}
@@ -100,7 +104,7 @@ export function PosterCard({ title, width, onPress, onFocus, hasTVPreferredFocus
   );
 }
 
-export function LandscapeCard({ title, episode, width, onPress, onFocus, hasTVPreferredFocus }: CardProps & { episode?: Episode }): React.JSX.Element {
+export function LandscapeCard({ title, episode, width, onPress, onFocus, hasTVPreferredFocus, container }: CardProps & { episode?: Episode }): React.JSX.Element {
   const L = useLayout();
   const radius = L.size({ tv: 18, wide: 16, phone: 14 });
   const label = L.size({ tv: 24, wide: 16, phone: 15 });
@@ -111,6 +115,7 @@ export function LandscapeCard({ title, episode, width, onPress, onFocus, hasTVPr
         accessibilityRole="button"
         accessibilityLabel={episode ? `${title.name}, episode ${episode.number}, ${episode.title}` : title.name}
         testID={`card-${title.id}`}
+        everframeTarget={{testId:`card-${title.id}`,name:episode ? `${title.name}, episode ${episode.number}, ${episode.title}` : title.name,role:"button",container}}
         onPress={onPress}
         onFocusChange={(f) => f && onFocus?.()}
         hasTVPreferredFocus={hasTVPreferredFocus}

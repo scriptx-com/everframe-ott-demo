@@ -9,6 +9,8 @@ import { Wordmark, styles } from './primitives';
 import { DemoReportButton } from './DemoReportButton';
 import { isDemoMode } from '../demo/mode';
 
+import { buildInteractionContainer } from '../everframe/interactionTargets';
+
 const DEMO_MODE = isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE });
 
 const TOP: Array<{ section: Section; label: string }> = [
@@ -42,7 +44,7 @@ export function TopNav({ active }: { active: Section }): React.JSX.Element {
     >
       <Wordmark size={L.size({ tv: 38, wide: 28, phone: 24 })} />
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: L.size({ tv: 8, wide: 4, phone: 4 }) }} accessibilityRole="tablist">
-        {TOP.map((item) => {
+        {TOP.map((item, index) => {
           const on = item.section === active;
           return (
             <Focusable
@@ -50,6 +52,7 @@ export function TopNav({ active }: { active: Section }): React.JSX.Element {
               accessibilityRole="tab"
               accessibilityState={{ selected: on }}
               testID={`nav-${item.section}`}
+              everframeTarget={{name:item.label,role:"tab",container:buildInteractionContainer("top-navigation","Main navigation",index,TOP.length,"tablist")}}
               onPress={() => nav.section(item.section)}
               style={{
                 paddingHorizontal: fs * 0.85,
@@ -116,7 +119,7 @@ export function TabBar({ active, bottomInset }: { active: Section; bottomInset: 
         paddingTop: 8,
       }}
     >
-      {TABS.map((t) => {
+      {TABS.map((t, index) => {
         const on = t.section === active;
         const tint = on ? color.marigold : color.lichen;
         return (
@@ -126,6 +129,7 @@ export function TabBar({ active, bottomInset }: { active: Section; bottomInset: 
             accessibilityState={{ selected: on }}
             accessibilityLabel={t.label}
             testID={`tab-${t.section}`}
+            everframeTarget={{name:t.label,role:"tab",container:buildInteractionContainer("phone-tabs","Main navigation",index,TABS.length,"tablist")}}
             onPress={() => nav.section(t.section)}
             containerStyle={{ flex: 1 }}
             style={{ alignItems: 'center', justifyContent: 'center', gap: 4, minHeight: 50 }}

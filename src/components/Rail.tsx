@@ -6,6 +6,8 @@ import { Focusable } from './Focusable';
 import { Icon } from './Icon';
 import { SectionHeading } from './primitives';
 
+import { buildInteractionContainer, type InteractionTargetAnnotation } from '../everframe/interactionTargets';
+
 export type Shape = 'poster' | 'landscape' | 'top10';
 
 /**
@@ -53,11 +55,12 @@ function Arrow({ dir, onPress }: { dir: 'back' | 'forward'; onPress: () => void 
  * A titled horizontal strip of cards. TV remotes and touch scroll it
  * natively; on wide screens two arrow buttons page through it for mouse users.
  */
-export function Rail<T>({ heading, items, shape, render, keyOf }: {
+export function Rail<T>({ id, heading, items, shape, render, keyOf }: {
+  id: string;
   heading: string;
   items: T[];
   shape: Shape;
-  render: (item: T, width: number, index: number) => React.ReactNode;
+  render: (item: T, width: number, index: number, container: NonNullable<InteractionTargetAnnotation['container']>) => React.ReactNode;
   keyOf: (item: T) => string;
 }): React.JSX.Element {
   const L = useLayout();
@@ -99,7 +102,7 @@ export function Rail<T>({ heading, items, shape, render, keyOf }: {
         removeClippedSubviews={clipOffscreen}
       >
         {items.map((it, i) => (
-          <React.Fragment key={keyOf(it)}>{render(it, width, i)}</React.Fragment>
+          <React.Fragment key={keyOf(it)}>{render(it, width, i, buildInteractionContainer(id, heading, i, items.length, 'list'))}</React.Fragment>
         ))}
       </ScrollView>
     </View>

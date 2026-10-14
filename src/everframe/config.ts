@@ -16,6 +16,7 @@ export const hasKey = apiKey.length > 0;
 
 export const everframeConfig = {
   apiKey,
+  sdkKey: apiKey, // Current SDK name; apiKey keeps released-demo compatibility.
   appName: 'nocturne',
   appVersion: '1.0.0',
   disabled: !hasKey,

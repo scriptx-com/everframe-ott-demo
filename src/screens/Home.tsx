@@ -66,12 +66,14 @@ function Rails({ onFocusTitle, onRailLayout }: {
     <View style={{ gap: L.size({ tv: 40, wide: 44, phone: 28 }) }}>
       <View onLayout={(e) => onRailLayout?.(0, e.nativeEvent.layout.y)}>
       <Rail
+        id="home-continue-watching"
         heading="Continue watching"
         shape="landscape"
         items={continueWatching}
         keyOf={(c) => c.title.id}
-        render={(c, w) => (
+        render={(c, w, _index, container) => (
           <LandscapeCard
+            container={container}
             title={c.title}
             episode={c.episode}
             width={w}
@@ -84,17 +86,18 @@ function Rails({ onFocusTitle, onRailLayout }: {
       {rails.map((rail, ri) => (
         <View key={rail.id} onLayout={(e) => onRailLayout?.(ri + 1, e.nativeEvent.layout.y)}>
         <Rail
+          id={`home-${rail.id}`}
           heading={rail.name}
           shape={rail.shape}
           items={rail.items}
           keyOf={(t) => t.id}
-          render={(t, w, i) =>
+          render={(t, w, i, container) =>
             rail.shape === 'top10' ? (
-              <RankedCard rank={i + 1} title={t} width={w} onFocus={() => onFocusTitle?.(t, ri + 1)} onPress={() => nav.push({ name: 'detail', id: t.id })} />
+              <RankedCard container={container} rank={i + 1} title={t} width={w} onFocus={() => onFocusTitle?.(t, ri + 1)} onPress={() => nav.push({ name: 'detail', id: t.id })} />
             ) : rail.shape === 'poster' ? (
-              <PosterCard title={t} width={w} onFocus={() => onFocusTitle?.(t, ri + 1)} onPress={() => nav.push({ name: 'detail', id: t.id })} />
+              <PosterCard container={container} title={t} width={w} onFocus={() => onFocusTitle?.(t, ri + 1)} onPress={() => nav.push({ name: 'detail', id: t.id })} />
             ) : (
-              <LandscapeCard title={t} width={w} onFocus={() => onFocusTitle?.(t, ri + 1)} onPress={() => nav.push({ name: 'detail', id: t.id })} />
+              <LandscapeCard container={container} title={t} width={w} onFocus={() => onFocusTitle?.(t, ri + 1)} onPress={() => nav.push({ name: 'detail', id: t.id })} />
             )
           }
         />

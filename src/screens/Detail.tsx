@@ -146,11 +146,12 @@ export function Detail({ id }: { id: string }): React.JSX.Element {
   const moreLikeThis = (
     <View style={{ marginTop: L.size({ tv: 72, wide: 64, phone: 28 }) }}>
       <Rail
+        id={`detail-${title.id}-similar`}
         heading="More like this"
         shape="poster"
         items={similar}
         keyOf={(t) => t.id}
-        render={(t, w) => <PosterCard title={t} width={w} onPress={() => nav.push({ name: 'detail', id: t.id })} />}
+        render={(t, w, _index, container) => <PosterCard container={container} title={t} width={w} onPress={() => nav.push({ name: 'detail', id: t.id })} />}
       />
     </View>
   );

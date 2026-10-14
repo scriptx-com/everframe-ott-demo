@@ -49,13 +49,36 @@ Metro build. Restart Metro between states. Production ignores the off switch.
    breadcrumb, then capture a report in both annotation states. Validate its
    `data.target` values against the public interaction-target JSON Schema.
 
-Local verification so far: metadata tests, typecheck, and web export pass against
-both the released package and the feature package. Android debug compilation
-and iOS debug compilation pass against local native artifacts. The public SDK's
-installed phone fixture has produced local iOS/Android envelopes with annotation
-on/off and masking; iOS also verified host replacement after native mount retries.
-Android's final mount retry needs an installed rerun after the dedicated emulator
-stalled under disk pressure. TV envelope runs and this demo's full Nocturne
-interaction matrix remain pending. Native envelope qualification is tracked separately in the coordinated SDK/private evidence; a successful
-compile alone is not evidence of device behavior. No deployment is part of this
-change.
+## Qualification results (2026-10-14)
+
+Local captured envelopes pass the poster, Continue watching, navigation,
+nested artwork, and immediate-navigation checks with annotations on and off
+on iOS 26.5, tvOS 26.5, Android 15/API35, and Android TV 14/API34. TV runs
+include Select and directional input. Every extracted descriptor validates
+against the generated interaction-target schema.
+
+Across all four runtimes, annotated Low Orbit retains `Home` as its source
+screen when opening a player/detail screen. Continue watching has logical
+index 0/count 5; its Top 10 poster has index 2/count 10. With annotations
+disabled, native names, test IDs and roles remain usable without invented rail
+positions. Phone SVG navigation and nested poster artwork resolve to their
+owning controls. Android phone rails were scrolled offscreen and back before
+activation; both TV runs also traversed away from and back to the poster.
+
+The installed SDK fixture separately passes metadata update, host replacement,
+automatic fallback and masking on all four runtimes. iOS/Android produce nine
+descriptors each, tvOS 22, and Android TV 28. Masked breadcrumbs retain only
+allowed role/masked fields. Native regression tests cover sibling reorder and
+registration ownership; the installed fixture covers update/remount behavior.
+
+Qualification used the feature RN package, matching locally built native
+artifacts, synthetic keys and a local collector. Temporary timed handled-error
+captures collected normal SDK breadcrumbs without changing the demo's press
+handlers or target metadata. That instrumentation is not shipped. These are
+local report-envelope checks, not production backend or companion acceptance.
+
+All 19 demo tests, typecheck, and web export previously passed with both the
+released SDK and the packed feature package. Native debug hosts build on all
+four runtimes; hosted demo CI is green. SDK implementation is in
+[PR 126](https://github.com/scriptx-com/everframe/pull/126). Broader coordinated integration gates are tracked separately.
+No deployment is part of this change.

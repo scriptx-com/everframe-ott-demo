@@ -41,6 +41,13 @@ describe('initialScenarioState', () => {
     expect(Object.values(initialScenarioState(true)).every(Boolean)).toBe(true);
     expect(Object.values(initialScenarioState(false)).some(Boolean)).toBe(false);
   });
+  it('can initialize one known demo scenario without recording setup navigation', () => {
+    expect(initialScenarioState(true, 'slowSearch')).toEqual({
+      subtitleDrift: false, brokenPoster: false, slowSearch: true, downloadFails: false, playerStall: false,
+    });
+    expect(initialScenarioState(true, 'not-a-scenario')).toEqual(initialScenarioState(true));
+    expect(initialScenarioState(false, 'slowSearch')).toEqual(initialScenarioState(false));
+  });
 });
 
 describe('keepCompanionRunning', () => {

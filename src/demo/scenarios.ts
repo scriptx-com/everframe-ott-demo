@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from 'react';
 import { initialScenarioState, isDemoMode } from './mode';
+import { getLaunchParam } from '../../modules/launch-params';
 
 // Bugs the app can switch on for a recording. Each one leaves the evidence an
 // Everframe report is meant to carry: a visible symptom for the screenshot,
@@ -47,10 +48,14 @@ export const scenarios: Scenario[] = [
   },
 ];
 
-type State = Record<ScenarioId, boolean>;
+export type ScenarioState = Record<ScenarioId, boolean>;
 
-// Demo builds start with every bug on, so a visitor always has something to find.
-let state: State = initialScenarioState(isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE }));
+// Demo builds default to every bug on. A known launch scenario isolates a capture
+// before interactions begin; ScenarioStatePublisher records the actual values.
+let state: ScenarioState = initialScenarioState(
+  isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE }),
+  getLaunchParam('demoScenario'),
+);
 const listeners = new Set<() => void>();
 
 function emit(): void {
@@ -59,13 +64,11 @@ function emit(): void {
 
 export function setScenario(id: ScenarioId, on: boolean): void {
   state = { ...state, [id]: on };
-  console.info(`[demo] ${id} ${on ? 'on' : 'off'}`);
   emit();
 }
 
 export function setAllScenarios(on: boolean): void {
-  state = Object.fromEntries(Object.keys(state).map((k) => [k, on])) as State;
-  console.info(`[demo] all scenarios ${on ? 'on' : 'off'}`);
+  state = Object.fromEntries(Object.keys(state).map((k) => [k, on])) as ScenarioState;
   emit();
 }
 
@@ -78,7 +81,7 @@ function subscribe(l: () => void): () => void {
   return () => listeners.delete(l);
 }
 
-export function useScenarios(): State {
+export function useScenarios(): ScenarioState {
   return useSyncExternalStore(subscribe, () => state, () => state);
 }
 

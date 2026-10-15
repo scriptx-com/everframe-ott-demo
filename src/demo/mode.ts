@@ -22,8 +22,9 @@ export function resolveWebKey(i: { demo: boolean; search: string; webEnvKey?: st
 
 const ALL: ScenarioId[] = ['subtitleDrift', 'brokenPoster', 'slowSearch', 'downloadFails', 'playerStall'];
 
-export function initialScenarioState(demo: boolean): Record<ScenarioId, boolean> {
-  return Object.fromEntries(ALL.map((id) => [id, demo])) as Record<ScenarioId, boolean>;
+export function initialScenarioState(demo: boolean, scenario?: string | null): Record<ScenarioId, boolean> {
+  const selected = demo && ALL.includes(scenario as ScenarioId) ? scenario : null;
+  return Object.fromEntries(ALL.map((id) => [id, selected ? id === selected : demo])) as Record<ScenarioId, boolean>;
 }
 
 /**

@@ -11,6 +11,7 @@ import { TabBar } from './components/Chrome';
 import { ReportTrigger } from './components/ReportTrigger';
 import { DemoReportButton, demoButtonPlacement } from './components/DemoReportButton';
 import { isDemoMode } from './demo/mode';
+import { ScenarioStatePublisher } from './demo/ScenarioStatePublisher';
 import { ToastHost } from './components/Toast';
 import { Home } from './screens/Home';
 import { Browse } from './screens/Browse';
@@ -121,6 +122,7 @@ export function App(): React.JSX.Element | null {
   if (!fontsLoaded) return <View style={{ flex: 1, backgroundColor: color.ground }} />;
   return (
     <EverframeProvider config={everframeConfig}>
+      <ScenarioStatePublisher />
       <StatusBar barStyle="light-content" backgroundColor={color.ground} />
       <SignedInViewer />
       <Shell />

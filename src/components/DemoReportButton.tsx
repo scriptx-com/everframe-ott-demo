@@ -3,12 +3,19 @@
 // streamed phone or the web needs to see it. TVs keep their remote triggers.
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
+import * as Everframe from '@everframe/react-native';
+import type { InteractionTargetAnnotation } from '../everframe/interactionTargets';
 import { requestReport } from './ReportTrigger';
 import { everframe, font } from '../theme';
 import { useLayout } from '../layout';
 import type { DemoButtonPlacement } from './demoButtonPlacement';
 
 export { demoButtonPlacement } from './demoButtonPlacement';
+
+// Older released SDKs remain usable while the reporter provenance API is in review.
+const useTarget = (Everframe as typeof Everframe & {
+  useEverframeTarget?: <T>(annotation?: InteractionTargetAnnotation) => React.RefCallback<T>;
+}).useEverframeTarget ?? (() => (_host: unknown) => {});
 
 export function DemoReportButton({
   placement,
@@ -19,8 +26,10 @@ export function DemoReportButton({
   bottom?: number;
 }): React.JSX.Element {
   const L = useLayout();
+  const reporterRef = useTarget<React.ElementRef<typeof Pressable>>({ reporterTrigger: 'button' });
   const pill = (
     <Pressable
+      ref={reporterRef}
       accessibilityRole="button"
       accessibilityLabel="Report a bug"
       testID="demo-report-button"

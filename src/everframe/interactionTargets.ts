@@ -3,6 +3,7 @@ export interface InteractionTargetAnnotation {
   testId?: string;
   name?: string;
   role?: string;
+  reporterTrigger?: 'button' | 'menu';
   container?: { testId?: string; name?: string; role?: string; index?: number; count?: number };
 }
 

@@ -1,0 +1,21 @@
+src/components/DemoReportButton.tsx
+  s_eb79cd0a048bfe::t_b84e05d09fcc07 6-7,15-19,29,32
+src/everframe/interactionTargets.ts
+  s_eb79cd0a048bfe::t_b84e05d09fcc07 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "100a3a9289d780b7187423ff628342b9e5cfdeb0",
+  "prompts": {},
+  "sessions": {
+    "s_eb79cd0a048bfe": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13b4b-6dbf-7273-9431-bee25af1347c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

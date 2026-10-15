@@ -1,3 +1,4 @@
+import { interactionPolicy } from './interactionEvents';
 import { consoleIntegration } from '@everframe/react-native/integrations/console';
 import { DEMO_KEY } from './keys';
 import { getLaunchParam } from '../../modules/launch-params';
@@ -17,6 +18,7 @@ export const hasKey = apiKey.length > 0;
 export const everframeConfig = {
   apiKey,
   sdkKey: apiKey, // Current SDK name; apiKey keeps released-demo compatibility.
+  interactions: interactionPolicy,
   appName: 'nocturne',
   appVersion: '1.0.0',
   disabled: !hasKey,

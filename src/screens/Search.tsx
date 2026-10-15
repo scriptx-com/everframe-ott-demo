@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, ScrollView, Text, TextInput, View } from 'react-native';
-import { useEverframeScreen } from '@everframe/react-native';
+import * as Everframe from '@everframe/react-native';
+import { interactionHelpersEnabled, selectInteractionHook } from '../everframe/interactionEvents';
 import { color, font } from '../theme';
 import { useInsets, useLayout } from '../layout';
 import { nav } from '../nav';
@@ -13,10 +14,14 @@ import { useCardWidth } from '../components/Rail';
 import { Icon } from '../components/Icon';
 import { ShowTitle } from '../components/primitives';
 
+const useInteraction = selectInteractionHook(Everframe, interactionHelpersEnabled);
+const { useEverframeScreen } = Everframe;
+
 const SUGGESTIONS = ['mystery', 'nature', 'space', 'night markets', 'jazz'];
 
 export function Search(): React.JSX.Element {
   useEverframeScreen('Search');
+  const interaction = useInteraction<TextInput>({ target: { testId: 'search-input', name: 'Search titles', role: 'searchbox' }, helperTypes: [] });
   const L = useLayout();
   const insets = useInsets();
   const [query, setQuery] = useState('');
@@ -59,6 +64,7 @@ export function Search(): React.JSX.Element {
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 999, backgroundColor: color.surface, borderWidth: 1, borderColor: color.lineStrong, paddingHorizontal: fs * 0.9, height: fs * 2.6, maxWidth: 760 }}>
           <Icon name="search" size={fs} color={color.lichen} />
           <TextInput
+            ref={interaction.ref}
             testID="search-input"
             accessibilityLabel="Search titles, genres and moods"
             value={query}

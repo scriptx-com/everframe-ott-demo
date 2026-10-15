@@ -157,7 +157,7 @@ browser. That build is the same app with `EXPO_PUBLIC_DEMO_MODE=1`:
   from `.env` or `src/everframe/keys.ts` apply.
 - **A visible Report a bug button** on phones and the web. Shaking the phone
   and Ctrl/Cmd+Shift+B still work, and TVs keep their remote triggers.
-- **Every demo bug starts on**, and Profile hides the switches.
+- **Every demo bug starts on** by default, and Profile hides the switches.
 
 Builds without the flag behave exactly as described above.
 
@@ -182,6 +182,20 @@ adb shell am start -n dev.everframe.nocturne/.MainActivity --es everframeKey evf
 ```
 
 Publishing the demo is covered in [docs/demo-mode.md](docs/demo-mode.md).
+
+For isolated native captures, the optional `demoScenario` launch parameter can
+enable one known scenario and disable the others before recording starts:
+`subtitleDrift`, `brokenPoster`, `slowSearch`, `downloadFails`, or `playerStall`.
+An absent or unknown value preserves the all-on default; non-demo builds ignore
+the parameter. The app still publishes the actual values through `setState`.
+
+```sh
+xcrun simctl launch booted dev.everframe.nocturne -demoScenario downloadFails
+adb shell am start -n dev.everframe.nocturne/.MainActivity --es demoScenario playerStall
+```
+
+Use a cold launch when changing this parameter. The scenario deep links below
+remain available for changing state after launch.
 
 ## Deep links
 

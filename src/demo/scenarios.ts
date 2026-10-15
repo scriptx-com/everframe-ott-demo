@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from 'react';
 import { initialScenarioState, isDemoMode } from './mode';
+import { getLaunchParam } from '../../modules/launch-params';
 
 // Bugs the app can switch on for a recording. Each one leaves the evidence an
 // Everframe report is meant to carry: a visible symptom for the screenshot,
@@ -49,8 +50,12 @@ export const scenarios: Scenario[] = [
 
 export type ScenarioState = Record<ScenarioId, boolean>;
 
-// Demo builds start with every bug on, so a visitor always has something to find.
-let state: ScenarioState = initialScenarioState(isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE }));
+// Demo builds default to every bug on. A known launch scenario isolates a capture
+// before interactions begin; ScenarioStatePublisher records the actual values.
+let state: ScenarioState = initialScenarioState(
+  isDemoMode({ EXPO_PUBLIC_DEMO_MODE: process.env.EXPO_PUBLIC_DEMO_MODE }),
+  getLaunchParam('demoScenario'),
+);
 const listeners = new Set<() => void>();
 
 function emit(): void {

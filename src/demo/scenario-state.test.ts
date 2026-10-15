@@ -3,6 +3,9 @@ import { initialScenarioState } from './mode';
 import { isOn, scenarios, setAllScenarios, setScenario, type ScenarioState } from './scenarios';
 import { publishScenarioState } from './scenario-state';
 
+// The State publication unit does not load Expo's native launch-parameter bridge.
+vi.mock('../../modules/launch-params', () => ({ getLaunchParam: () => null }));
+
 const keys = ['demo.subtitleDrift', 'demo.brokenPoster', 'demo.slowSearch', 'demo.downloadFails', 'demo.playerStall'];
 const snapshot = (): ScenarioState => Object.fromEntries(scenarios.map(({ id }) => [id, isOn(id)])) as ScenarioState;
 afterEach(() => vi.restoreAllMocks());

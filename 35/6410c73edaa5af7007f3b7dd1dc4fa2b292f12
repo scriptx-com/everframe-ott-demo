@@ -1,0 +1,20 @@
+README.md
+  s_eb79cd0a048bfe::t_4aac0822d2cdd4 160,186-198
+  s_eb79cd0a048bfe::t_2a9d742ad413fd 199
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "356410c73edaa5af7007f3b7dd1dc4fa2b292f12",
+  "prompts": {},
+  "sessions": {
+    "s_eb79cd0a048bfe": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13b4b-6dbf-7273-9431-bee25af1347c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}

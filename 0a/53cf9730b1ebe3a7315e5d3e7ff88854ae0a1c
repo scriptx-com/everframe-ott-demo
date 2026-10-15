@@ -1,0 +1,25 @@
+src/demo/scenario-state.test.ts
+  s_eb79cd0a048bfe::t_1319128b0fccaf 6-8
+src/demo/scenarios.ts
+  s_eb79cd0a048bfe::t_26440d958ab979 3,53-58
+src/demo/mode.ts
+  s_eb79cd0a048bfe::t_26440d958ab979 25-27
+src/demo/mode.test.ts
+  s_eb79cd0a048bfe::t_1eb330bd741c90 44-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0a53cf9730b1ebe3a7315e5d3e7ff88854ae0a1c",
+  "prompts": {},
+  "sessions": {
+    "s_eb79cd0a048bfe": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13b4b-6dbf-7273-9431-bee25af1347c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Aurimas Mickys <aurimasmickys@gmail.com>"
+    }
+  }
+}
